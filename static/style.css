@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  header.masterhead {
+    position: relative;
+    background-color: #343a40;
+    background: url('/static/img/fundo_home.jpg') no-repeat center center;
+    background-size: cover;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+  header.masterhead:before {
+    content: "";
+    position: absolute;
+    background-color: #1c375e;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+  }
+  header.masterhead h1, header.masterhead .h1 {
+    font-size: 2rem;
+  }
+  @media (min-width: 768px) {
+    header.masterhead {
+      padding-top: 12rem;
+      padding-bottom: 12rem;
+    }
+    header.masterhead h1, header.masterhead .h1 {
+      font-size: 3rem;
+    }
+  }
+  footer.footer {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: #343a40;
+  }

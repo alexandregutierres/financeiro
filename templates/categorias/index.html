@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Categorias</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+           <th scope="col">Categoria</th>
+           <th scope="col">Ações</th>
+        </tr>  
+    </thead>
+    <tbody>
+        {% for obj in categorias %}
+            <tr>
+                <td>{{obj['Categoria']}}</td>
+                <td>Editar|Apagar</td>
+            </tr>
+        {% endfor %}    
+    </tbody>
+<table>
+
+{% endblock %}
