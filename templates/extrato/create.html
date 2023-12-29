@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container container-ajustes">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Início</a></li>
+          <li class="breadcrumb-item"><a href="{{ url_for('extrato') }}">Extrato</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Novo item</li>
+        </ol>
+    </nav>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        Aqui no <strong>Fluxo de Caixa</strong> você pode acompanhar seu extrato, além de fazer previsões de Crédito e Débito.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<div class="container container-branco-sombreado">
+    <form class="row g-3 needs-validation p-3" novalidate>
+        <div class="row">
+            <div class="col-md-4">
+            <label for="extrato_data" class="form-label">Data</label>
+            <input type="date" class="form-control" id="extrato_data" required>
+            </div>
+            <div class="col-md-4">
+            <label for="extrato_valor" class="form-label">Valor</label>
+            <input type="number" min="1" step="any" value=0 class="form-control" id="extrato_valor" required>
+            </div>
+            <div class="col-md-4">
+                <label for="extrato_valor" class="form-label">Tipo</label>
+                <select class="form-select" id="extrato_tipo">
+                    <option selected value="D">Saída</option>
+                    <option value="C">Entrada</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="extrato_categoria" class="form-label">Categoria</label>
+                <select class="form-select" id="extrato_categoria">
+                </select>
+            </div>
+            <div class="col-md-8">
+                <label for="extrato_descricao" class="form-label">Descrição</label>
+                <input type="text" class="form-control" id="extrato_descricao" required>
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col-md-12">
+                <button class="btn btn-primary" type="submit">Salvar</button>
+            </div>
+        </div>
+      </form>
+</div>
+
+{% endblock %}

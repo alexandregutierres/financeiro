@@ -1,10 +1,8 @@
 from flask import Flask, render_template, redirect
-import pandas as pd
-import requests
-import plotly.express as px
-import json
+from conexao import Conexao
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
@@ -16,24 +14,27 @@ def layout():
 
 @app.route('/categorias')
 def categorias():
-    api_url = 'https://parseapi.back4app.com/classes/Categoria'
- 
-    headers  = {"accept": "application/json",
-                "X-Parse-Application-Id" : "5qYGdcl6opRF8nltPYjOOIFCatF40inhOyXYLpdo",
-                "X-Parse-REST-API-Key" : "oE6cpdY1BEuP8m0UED9fsMoSkGDfy3ATWbrOU9sR"}
-    
-
-    response = requests.get(api_url, headers=headers)
-    dados = response.json()['results']
+    conn = Conexao('Categoria')
+    dados = conn.Get()
     
     return render_template('categorias/index.html', categorias=dados)
-
-
 
 @app.route('/categorias/create')
 def categoria_create():
     return render_template('categorias/create.html')
 
+@app.route('/fluxocaixa')
+def fluxocaixa():
+    return render_template('fluxocaixa/index.html')
+
+@app.route('/extrato')
+def extrato():
+    return render_template('extrato/index.html')
+
+
+@app.route('/extrato/create')
+def extrato_create():
+    return render_template('extrato/create.html')
 
 if __name__ == '__main__':
     app.run()

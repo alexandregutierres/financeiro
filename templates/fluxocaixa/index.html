@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container container-ajustes">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Início</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Fluxo de Caixa</li>
+        </ol>
+    </nav>
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        Aqui no <strong>Fluxo de Caixa</strong> você pode acompanhar seu extrato, além de fazer previsões de Crédito e Débito.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<div class="container container-branco-sombreado">
+    <p class="h5 p-2">Fluxo de Caixa</p>
+
+    <table class="table table-striped table-hover table-bordered ">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th class="text-end">Entradas (Realizadas)</th>
+                <th class="text-end">Saídas (Realizadas)</th>
+                <th class="text-end">Entradas (Previstas)</th>
+                <th class="text-end">Saídas (Previstas)</th>
+                <th class="text-end">Saldo (Realizado)</th>
+                <th class="text-end">Saldo (Previsto + Realizado)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>31.12.2023</td>
+                <td class="text-end">10.000,00</td>
+                <td class="text-end">-1.000,00</td>
+                <td class="text-end">0,00</td>
+                <td class="text-end">-100,00</td>
+                <td class="text-end">9.000,00</td>
+                <td class="text-end">8.900,00</td>
+            </tr>
+            <tr>
+                <td>01.01.2024</td>
+                <td class="text-end">0,00</td>
+                <td class="text-end">0,00</td>
+                <td class="text-end">0,00</td>
+                <td class="text-end">0,00</td>
+                <td class="text-end">9.000,00</td>
+                <td class="text-end">8.900,00</td>
+            </tr>
+            <tr>
+                <td>02.01.2024</td>
+                <td class="text-end">0,00</td>
+                <td class="text-end">0,00</td>
+                <td class="text-end">0,00</td>
+                <td class="text-end">-500,00</td>
+                <td class="text-end">9.000,00</td>
+                <td class="text-end">8.400,00</td>
+            </tr>
+
+        </tbody>    
+    </table>
+</div>
+
+{% endblock %}

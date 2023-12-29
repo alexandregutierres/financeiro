@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz@6..12');
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: #f1f4ff;
   }
 
   header.masterhead {
@@ -37,4 +38,34 @@ body {
     padding-top: 4rem;
     padding-bottom: 4rem;
     background-color: #343a40;
+  }
+
+  .navbar-ajustes {
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.15); 
+    background-color: #ffffff;
+  }
+
+  .navbar-brand-ajustes {
+    min-width: 243px;
+    max-width: 243px;
+  }
+
+  .container-ajustes {
+    margin: 20px auto auto auto;
+  }
+
+  .container-branco-sombreado {
+    margin: 20px auto auto auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.15); 
+    min-height: 50vh;
+  }
+  
+  .table-striped>tbody>tr:nth-child(odd)>td, 
+  .table-striped>tbody>tr:nth-child(odd)>th {
+     background-color: #e7ebff; 
+   }
+
+  .table {
+    font-size:90%;
   }
