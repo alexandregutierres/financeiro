@@ -14,7 +14,7 @@ def layout():
 
 @app.route('/categorias')
 def categorias():
-    conn = Conexao('Categoria')
+    conn = Conexao('Categoria', 'Categoria')
     dados = conn.Get()
     
     return render_template('categorias/index.html', categorias=dados)
@@ -34,7 +34,11 @@ def extrato():
 
 @app.route('/extrato/create')
 def extrato_create():
-    return render_template('extrato/create.html')
+    conn = Conexao('Categoria', 'Categoria')
+    dados = conn.Get()
+    
+    return render_template('extrato/create.html', categorias=dados)
+
 
 if __name__ == '__main__':
     app.run()

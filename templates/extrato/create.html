@@ -36,6 +36,9 @@
             <div class="col-md-4">
                 <label for="extrato_categoria" class="form-label">Categoria</label>
                 <select class="form-select" id="extrato_categoria">
+                    {% for c in categorias %}
+                        <option value="{{ c.objectId }}">{{ c.Categoria }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="col-md-8">
