@@ -14,19 +14,19 @@
     </div>
 </div>
 <div class="container container-branco-sombreado">
-    <form class="row g-3 needs-validation p-3" novalidate>
+    <form class="row g-3 needs-validation p-3" action="{{ url_for('extrato_create') }}" method="post">
         <div class="row">
             <div class="col-md-4">
             <label for="extrato_data" class="form-label">Data</label>
-            <input type="date" class="form-control" id="extrato_data" required>
+            <input type="date" class="form-control" id="extrato_data" name="Data_Movimento" required>
             </div>
             <div class="col-md-4">
             <label for="extrato_valor" class="form-label">Valor</label>
-            <input type="number" min="1" step="any" value=0 class="form-control" id="extrato_valor" required>
+            <input type="number" min="1" step="any" value=0 class="form-control" id="extrato_valor" name="Valor" required>
             </div>
             <div class="col-md-4">
                 <label for="extrato_valor" class="form-label">Tipo</label>
-                <select class="form-select" id="extrato_tipo">
+                <select class="form-select" id="extrato_tipo" name="Tipo_Movimento">
                     <option selected value="D">Saída</option>
                     <option value="C">Entrada</option>
                 </select>
@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-md-4">
                 <label for="extrato_categoria" class="form-label">Categoria</label>
-                <select class="form-select" id="extrato_categoria">
+                <select class="form-select" id="extrato_categoria" name="Categoria">
                     {% for c in categorias %}
                         <option value="{{ c.objectId }}">{{ c.Categoria }}</option>
                     {% endfor %}
@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-8">
                 <label for="extrato_descricao" class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="extrato_descricao" required>
+                <input type="text" class="form-control" id="extrato_descricao" required name="Descricao">
             </div>
         </div>
         <div class="row p-2">

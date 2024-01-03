@@ -1,8 +1,11 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, request
 from conexao import Conexao
+from datetime import datetime
+from dateutil import parser
+
+from models.extrato import Extrato
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def index():
@@ -29,16 +32,27 @@ def fluxocaixa():
 
 @app.route('/extrato')
 def extrato():
-    return render_template('extrato/index.html')
-
-
-@app.route('/extrato/create')
-def extrato_create():
-    conn = Conexao('Categoria', 'Categoria')
+    conn = Conexao('Extrato', 'Data_Movimento')
     dados = conn.Get()
-    
-    return render_template('extrato/create.html', categorias=dados)
+    return render_template('extrato/index.html', extratos=dados)
 
+
+@app.route('/extrato/create', methods=['POST', 'GET'])
+def extrato_create():
+    if request.method == 'POST':
+        conn = Conexao('Extrato', '')
+        extrato = Extrato(request.form['Data_Movimento'], request.form['Valor'], request.form['Tipo_Movimento'], request.form['Categoria'], request.form['Descricao'], False)
+        dados = conn.Post(data_to_send=extrato.ToJSON())
+        
+        return render_template('extrato/index.html')
+    else:
+        conn = Conexao('Categoria', 'Categoria')
+        dados = conn.Get()
+        return render_template('extrato/create.html', categorias=dados)
+
+@app.template_filter('to_date')
+def converto_to_date(value):
+    return datetime.strftime(parser.parse(value), '%d/%m/%Y')
 
 if __name__ == '__main__':
     app.run()
