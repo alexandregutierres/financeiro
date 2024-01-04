@@ -1,3 +1,4 @@
+import json
 from flask import Flask, render_template, request
 from conexao import Conexao
 from datetime import datetime
@@ -34,7 +35,22 @@ def fluxocaixa():
 def extrato():
     conn = Conexao('Extrato', 'Data_Movimento')
     dados = conn.Get()
-    return render_template('extrato/index.html', extratos=dados)
+    
+    _lista_extrato = []
+    _saldo = 0
+    _tipo_movimento = ''
+    for d in dados:
+        if d['Tipo_Movimento'] == 'C':
+            _tipo_movimento = 'Entrada'
+            _saldo = _saldo + float(d['Valor'])
+        else:
+            _tipo_movimento = 'Saída'
+            _saldo = _saldo - float(d['Valor'])
+    
+        extrato = Extrato(d['Data_Movimento'], d['Valor'], _tipo_movimento, d['Categoria'], d['Descricao'], False, _saldo)    
+        _lista_extrato.append(extrato)
+    
+    return render_template('extrato/index.html', extratos=_lista_extrato)
 
 
 @app.route('/extrato/create', methods=['POST', 'GET'])

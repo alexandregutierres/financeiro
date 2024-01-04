@@ -1,11 +1,12 @@
 class Extrato:
-    def __init__(self, Data_Movimento, Valor, Tipo_Movimento, Categoria, Descricao, Futuro):
+    def __init__(self, Data_Movimento, Valor, Tipo_Movimento, Categoria, Descricao, Futuro, Saldo):
         self.Data_Movimento = Data_Movimento
         self.Valor = Valor
         self.Tipo_Movimento = Tipo_Movimento
         self.Categoria = Categoria
         self.Descricao = Descricao
         self.Futuro = Futuro
+        self.Saldo = Saldo
         
     def ToJSON(self):
         json_string = '{"Data_Movimento": {"__type": "Date", "iso": "' + str(self.Data_Movimento) + 'T00:00:00.000Z"},' + \

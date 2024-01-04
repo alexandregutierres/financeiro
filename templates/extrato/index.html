@@ -38,10 +38,11 @@
                     <td>{{ extrato['Tipo_Movimento'] }}</td>
                     <td>{{ extrato['Categoria'] }}</td>
                     <td>{{ extrato['Descricao'] }}</td>
-                    <td class="text-end">{{extrato['Valor']}}</td>
-                    <td class="text-end">0</td>
-                </tr>
+                    <td class="text-end">{{extrato['Valor']|float}}</td>
+                    <td class="text-end">{{extrato['Saldo']|float}}</td>
+                </tr> 
                 {% endfor %}    
+               
             </tbody>    
             <tfoot>
                 <tr>
